@@ -8,7 +8,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include<iostream>
+#include <iostream>
 #include "sort.h"
 #include "bubbleSort.h"
 #include "bubblesort_optimized.h"
@@ -16,12 +16,10 @@
 #include "selectionSort.h"
 #include "standardSort.h"
 
-using namespace std;
-
-void printVector(vector<int> &vec);
-void fillVectorRandom(vector<int> &vec, int count);
-void fillVectorAsc(vector<int> &vec, int count);
-void fillVectorDsc(vector<int> &vec, int count);
-void testSort(Sort* sort, vector<int> &vec, string initialCondition, int size, int iterationCount);
+void printVector(std::vector<int> &vec);
+void fillVectorRandom(std::vector<int> &vec, int count);
+void fillVectorAsc(std::vector<int> &vec, int count);
+void fillVectorDsc(std::vector<int> &vec, int count);
+void testSort(Sort* sort, std::vector<int> &vec, std::string initialCondition, int size, int iterationCount);
 
 #endif

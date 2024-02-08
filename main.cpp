@@ -9,16 +9,14 @@
 #include<vector>
 #include "main.h"
 
-using namespace std;
-
 int main(int argc, char *argv[]){
 
     int n;
 
     if(argc == 2){
-        n = stoi(argv[1]);
+        n = std::stoi(argv[1]);
     }else{
-        cout << "n size not specified, defaulting to 1000" << endl;
+        std::cout << "n size not specified, defaulting to 1000" << std::endl;
         n = 1000;
     }
 
@@ -27,10 +25,10 @@ int main(int argc, char *argv[]){
     srand(time(0));
     
     //create an initial vector to hold integers
-    vector<int> vec; 
+    std::vector<int> vec; 
 
     //create a vector of sort pointers
-    vector<Sort*> sortVector;
+    std::vector<Sort*> sortVector;
 
     //***********************************************
     //TODO:
@@ -55,12 +53,12 @@ int main(int argc, char *argv[]){
 
     //go through each object in the vector and test each sort
     for(std::size_t i = 0; i < sortVector.size(); i++){
-        cout << "--------------------------------------------------------------------------------" << endl;
-        cout << sortVector.at(i)->toString() << endl;
+        std::cout << "--------------------------------------------------------------------------------" << std::endl;
+        std::cout << sortVector.at(i)->toString() << std::endl;
         testSort(sortVector.at(i), vec, "Ascending", n, 5);
         testSort(sortVector.at(i), vec, "Descending", n, 5);
         testSort(sortVector.at(i), vec, "Random", n, 5);
-        cout << "--------------------------------------------------------------------------------" << endl;
+        std::cout << "--------------------------------------------------------------------------------" << std::endl;
 
     }
 
@@ -70,10 +68,10 @@ int main(int argc, char *argv[]){
     return 0;
 }
 
-void testSort(Sort* sort, vector<int> &vec, string initialCondition, int size, int iterationCount){
+void testSort(Sort* sort, std::vector<int> &vec, std::string initialCondition, int size, int iterationCount){
     
     double averageTime = 0.0;
-    string results;
+    std::string results;
 
     for(int i = 0; i < iterationCount; i++){
 
@@ -103,24 +101,23 @@ void testSort(Sort* sort, vector<int> &vec, string initialCondition, int size, i
     averageTime = averageTime / iterationCount;
 
     //output information to console
-    // **NOTE**
-    // you can comment my cout lines and create you own, then redirect to a file
-    // using the linux commandline > for easier logging!
+    // **Hint**
+    // 
+    // using the linux commandline > for easier logging to file if needed!
     //
     // keep this original output format for your final submission
-    cout << sort->name << ", input data: " << initialCondition;
-    cout << ", n=" << size << ", average time: " << averageTime << " secs" << endl;
+    printf("%s, input data: %s, n=%d, average time: %.4f secs\n", sort->name.c_str(), initialCondition.c_str(), size, averageTime);
 
 }
 
-void printVector(vector<int> &vec){
+void printVector(std::vector<int> &vec){
     for(std::size_t i = 0; i < vec.size(); i++){
-        cout << vec.at(i) << " ";
+        std::cout << vec.at(i) << " ";
     }
-    cout << endl;
+    std::cout << std::endl;
 }
 
-void fillVectorRandom(vector<int> &vec, int count){
+void fillVectorRandom(std::vector<int> &vec, int count){
 
     int min = 0;
     int max = 1000000000;
@@ -131,16 +128,15 @@ void fillVectorRandom(vector<int> &vec, int count){
 
 }
 
-void fillVectorAsc(vector<int> &vec, int count){
+void fillVectorAsc(std::vector<int> &vec, int count){
 
     for(int i = 0; i < count; i++){
         vec.push_back(i);
     }
 
-
 }
 
-void fillVectorDsc(vector<int> &vec, int count){
+void fillVectorDsc(std::vector<int> &vec, int count){
 
     for(int i = count; i > 0; i--){
         vec.push_back(i);
